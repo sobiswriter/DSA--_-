@@ -7,6 +7,7 @@ void SelectionSort(int arr[], int n) {
         int min_idx = i;
         
         for(int j = i+1; j < n; j++){
+            //changing the >,< makes it go assending or discending, easy right!!!
             if (arr[j] < arr[min_idx]){
                 min_idx=j;
             }
