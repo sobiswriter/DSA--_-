@@ -25,6 +25,25 @@ void SelectionSort(int arr[], int n){
     }
 }
 
+//Discovery: How to print the last no in the array using selection Sort. ;)
+void SelectionSort(int arr[], int n){
+    for(int i=0; i<n; i++){
+        int min_idx = i;
+        for(int j=i+1; j<n; j++){
+            //making changes in the if loop to get the furtherst or closest yk index, Don't forget the break statement toh! :P 
+            if(j>min_idx){
+                arr[min_idx] = arr[j];
+            }
+        
+        if(min_idx != i){
+            int temp = arr[min_idx];
+            arr[min_idx] = arr[i];
+            arr[i] = temp;
+        }
+        }
+    }
+}
+
 int main(){
     cout<<"how many nums agn: ";
     int n;

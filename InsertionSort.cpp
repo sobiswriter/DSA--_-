@@ -18,6 +18,7 @@ void InsertionSort(int arr[], int n){
         arr[j+1] = key;
     }
 }
+//honestly it's like backtracking.
 
 int main(){
     cout<<"how many nums agn: ";

@@ -14,12 +14,12 @@ void SelectionSort(int arr[], int n) {
         
         //The above loop is for exchangeing min index value to get smallest no ig
         //Now we actually make sure smallest no is in right postion
-        
+        }
         if(min_idx!=i){
             int temp = arr[min_idx];
             arr[min_idx] = arr[i];
             arr[i] = temp;
-        }
+        
         }
     }
 }
