@@ -10,8 +10,20 @@ This folder is my personal DSA playground: bite-sized implementations, practice 
 
 ## What's inside
 
-- [bubbleSort.cpp](bubbleSort.cpp) — a small example to get started.
-- (You) Add more files named by algorithm or problem, e.g. `quick_sort.cpp`, `linked_list.cpp`, `graph_dijkstra.cpp`.
+### Sorting Algorithms
+- [bubbleSort.cpp](bubbleSort.cpp) — Implementation of bubble sort algorithm.
+- [antiBubbleSort.cpp](antiBubbleSort.cpp) — Variant of bubble sort.
+- [InsertionSort.cpp](InsertionSort.cpp) — Insertion sort implementation.
+- [selectionSort.cpp](selectionSort.cpp) — Selection sort algorithm.
+- [SelectionSortHighLow.cpp](SelectionSortHighLow.cpp) — Selection sort variant for finding high and low values.
+
+### Searching Algorithms
+- [LinearSearch.cpp](LinearSearch.cpp) — Linear search implementation.
+- [BothSearches.cpp](BothSearches.cpp) — Contains implementations of linear and binary search.
+- [MaxFinderBS.cpp](MaxFinderBS.cpp) — Binary search for finding maximum element.
+
+### Practice
+- [practice.cpp](practice.cpp) — General practice file for miscellaneous implementations.
 
 ## How to use
 
