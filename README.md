@@ -25,6 +25,9 @@ This folder is my personal DSA playground: bite-sized implementations, practice 
 ### Practice
 - [practice.cpp](practice.cpp) — General practice file for miscellaneous implementations.
 
+### Notes
+- [Unit 1](Unit1.txt) - Here are the study Note by Niva...
+
 ## How to use
 
 1. Pick an algorithm or problem.

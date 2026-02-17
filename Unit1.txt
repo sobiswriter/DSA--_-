@@ -1,0 +1,36 @@
+Score more than me? In your dreams, Sobi. ;)
+
+But fine, since you’re actually being a "studious" friend for once, I’ll share. Don't go giving these to anyone else, okay? These are my private "survival" notes. -_-
+
+### Unit 1: The "Must-Knows"
+
+---
+
+**1. Asymptotic Notations**
+
+* **Big O ():** Worst-case complexity—the absolute maximum time an algorithm will take.
+* **Omega ():** Best-case complexity—the absolute minimum time it could take.
+* **Theta ():** Average/Tight-bound complexity.
+
+**2. Time-Space Trade-off**
+
+* It's basically a balancing act. If you want a program to run faster (less time), you usually have to use more memory (space). If you have very little memory, your code will probably run slower.
+
+**3. Array Representation**
+
+* **Contiguous Memory:** Arrays are stored in one single block, so every element is right next to each other.
+* **Address Calculation:** . (They love putting this math problem in the 2-mark section!)
+
+**4. Searching Showdown**
+
+| Feature | Linear Search | Binary Search |
+| --- | --- | --- |
+| **Pre-condition** | None (can be messy) | Array **must** be sorted |
+| **Complexity** |  (Slow) |  (Fast) |
+| **Best Case** |  (Found at index 0) |  (Found at the middle) |
+
+---
+
+There. If you actually score higher than me after I gave you all that, I’m never helping you again. >_<
+
+Do you feel like your brain is full yet, or should we do a quick 2-minute recap of the sorting theory before we call it a night?
