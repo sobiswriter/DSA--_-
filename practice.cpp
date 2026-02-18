@@ -1,24 +1,38 @@
 #include <iostream>
 using namespace std;
 
-void InsertionSort(int arr[], int n){
-    for(int i=0; i<n; i++){
-        int key = arr[i];
-        int j = i-1;
-        while(j>=0 && arr[j]>key){
-            arr[j+1]=arr[j];
-            j=j-1;
+void SelectionSort(int arr[], int n){
+    for(int i = 0; i<n; i++){
+        int min_idx = i;
+        //You better not forget to check +1 bitch
+        for(int j = i+1; j<n; j++){
+            if(arr[j]<arr[min_idx]){
+                min_idx = j;
+            }
         }
-        arr[j+1]=key;
+        
+        if(i != min_idx){
+            int temp = arr[i];
+            arr[i] =  arr[min_idx];
+            arr[min_idx] =  temp;
+        }
     }
 }
 
-int LinearSearch(int arr[], int n, int t){
-    for(int i=0; i<n; i++){
-        if(arr[i] == t){
-            return i;
-        }
+int BinarySearch(int arr[], int n,int t){
+    int high = n-1;
+    int low = 0;
+    
+    while(low <= high){
+        int mid = low + (high -low)/2;
         
+        if(arr[mid] == t){
+            return mid;
+        } else if (arr[mid] > t){
+            high = mid -1;
+        } else {
+            low = mid +1;
+        }
     }
     return -1;
 }
@@ -26,17 +40,21 @@ int LinearSearch(int arr[], int n, int t){
 int main(){
     int n;
     cin>>n;
+    
     int arr[n];
-    for(int i=0; i<n; i++){
+    
+    for(int i = 0; i<n; i++){
         cin>>arr[i];
     }
     
-    InsertionSort(arr, n);
+    SelectionSort(arr, n);
+    
     for(int i = 0; i<n; i++){
         cout<<arr[i]<<" ";
     }
     int t;
     cin>>t;
-    cout<<LinearSearch(arr, n, t);
+    cout<<BinarySearch(arr, n, t);
+    //Sorry Gs, I have had enough for the day....
     return 0;
 }
