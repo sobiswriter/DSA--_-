@@ -1,60 +1,48 @@
 #include <iostream>
 using namespace std;
 
-void SelectionSort(int arr[], int n){
-    for(int i = 0; i<n; i++){
-        int min_idx = i;
-        //You better not forget to check +1 bitch
-        for(int j = i+1; j<n; j++){
-            if(arr[j]<arr[min_idx]){
-                min_idx = j;
+void BubbleSort(int arr[], int n){
+    for(int i = 0; i<n-1; i++){
+        for(int j = 0; j<n-1-i; j++){
+            if(arr[j]>arr[j+1]){
+                int temp = arr[j];
+                arr[j] =  arr[j+1];
+                arr[j+1] = temp;
             }
-        }
-        
-        if(i != min_idx){
-            int temp = arr[i];
-            arr[i] =  arr[min_idx];
-            arr[min_idx] =  temp;
         }
     }
 }
-
-int BinarySearch(int arr[], int n,int t){
+//Thoday is a Lucky Day baby ;)
+int BinarySearch(int arr[], int n, int t){
     int high = n-1;
     int low = 0;
-    
     while(low <= high){
-        int mid = low + (high -low)/2;
+        int mid = low + (high - low)/2;
         
         if(arr[mid] == t){
             return mid;
-        } else if (arr[mid] > t){
+        } else if (arr[mid] < t){
             high = mid -1;
         } else {
-            low = mid +1;
+            low  = mid +1;
         }
     }
     return -1;
 }
-
+//No mistakes boys & gs ;)
 int main(){
     int n;
     cin>>n;
-    
     int arr[n];
-    
     for(int i = 0; i<n; i++){
         cin>>arr[i];
     }
-    
-    SelectionSort(arr, n);
-    
+    BubbleSort(arr, n);
     for(int i = 0; i<n; i++){
         cout<<arr[i]<<" ";
     }
     int t;
     cin>>t;
-    cout<<BinarySearch(arr, n, t);
-    //Sorry Gs, I have had enough for the day....
+    cout<<"\nThe index is: "<<BinarySearch(arr, n, t);
     return 0;
 }
