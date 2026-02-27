@@ -1,36 +1,36 @@
 #include <iostream>
 using namespace std;
 
-//1. struct a node, it's just new data and * next;
 struct Node{
     int data;
     Node* next;
 };
 
-//2. the append func: with headref & data
-void append(Node** head_ref, int new_data){
-    //2.1 make a newnode & point it to data(no need for int tho);
-    Node* new_node = new Node();
-    new_node->data = new_data;
-    new_node->next = NULL; //point to next node i.e. Null;
+void append(Node** head_ref, int newdata){
+    Node* newnode = new Node();
+    newnode -> data = newdata;
+    newnode -> next = NULL;
     
-    //2.2 if head is Null, make it newnode;
     if(*head_ref == NULL){
-        *head_ref = new_node;
+        *head_ref = newnode;
         return;
     }
-    //2.3 Make a last node & refer it to head;
-    Node* last = *head_ref;
     
-    //2.3 while nextnode is not Null, move to next node until NULL;
+    Node* last = *head_ref;
     while(last->next != NULL){
-        last=last->next;
+        last = last->next;
     }
-    last->next = new_node;
-
+    last->next = newnode;
 }
 
-//5. This is the delete last node func, with headref;
+void printList(Node* node){
+    while(node != NULL){
+        cout<<node->data<<" -> ";
+        node = node->next;
+    }
+    cout<<"NULL \n";
+}
+
 void deleteLast(Node** head_ref){
     if(*head_ref == NULL) return;
     if((*head_ref) -> next == NULL){
@@ -49,17 +49,6 @@ void deleteLast(Node** head_ref){
     
 }
 
-//3. Print stuff uising pl func, n* node yk
-void printList(Node* node){
-    //3.1 while node is not null, print n->d and move to next n=n->n
-    while(node != NULL){
-        cout<<node->data<<" -> ";
-        node = node->next;
-    }
-    cout<<"NULL";
-}
-
-//4.Main func;
 int main(){
     Node* head = NULL;
     append(&head, 9);
