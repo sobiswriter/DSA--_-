@@ -33,6 +33,7 @@ This folder is my personal DSA playground: bite-sized implementations, practice 
 1. Pick an algorithm or problem.
 2. Implement it in a descriptively named file.
 3. Compile and run locally to verify.
+4. I'm at unit 2 btw ;
 
 Quick compile & run (Windows, PowerShell):
 
