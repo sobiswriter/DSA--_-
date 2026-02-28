@@ -8,11 +8,11 @@ struct Node{
 
 void append(Node** head_ref, int newdata){
     Node* newnode = new Node();
-    newnode -> data = newdata;
-    newnode -> next = NULL;
+    newnode->data = newdata;
+    newnode->next = NULL;
     
     if(*head_ref == NULL){
-        *head_ref = newnode;
+        *head_ref=newnode;
         return;
     }
     
@@ -23,41 +23,54 @@ void append(Node** head_ref, int newdata){
     last->next = newnode;
 }
 
+void deleteLast(Node** head_ref){
+    if(*head_ref == NULL) return;
+    if((*head_ref)->next == NULL){
+        delete *head_ref;
+        //just this line
+        *head_ref = NULL;
+        return;
+    }
+    
+    Node* sec_las = *head_ref;
+    while(sec_las->next->next != NULL){
+        sec_las = sec_las->next;
+    }
+    //same as ahead brother;
+    delete (sec_las->next);
+    sec_las->next = NULL;
+}
+
 void printList(Node* node){
     while(node != NULL){
         cout<<node->data<<" -> ";
         node = node->next;
     }
-    cout<<"NULL \n";
-}
-
-void deleteLast(Node** head_ref){
-    if(*head_ref == NULL) return;
-    if((*head_ref) -> next == NULL){
-        delete *head_ref;
-        //forgot this line, for some reason works without it as well ;)
-        *head_ref = NULL;
-        return;
-    }
-    Node* sec_last = *head_ref;
-    while(sec_last->next->next != NULL){
-        sec_last = sec_last->next;
-    }
-    
-    delete (sec_last->next);
-    sec_last->next = NULL;
-    
+    cout<<"NULL";
 }
 
 int main(){
     Node* head = NULL;
-    append(&head, 9);
     append(&head, 10);
-    append(&head, 11);
-    
+    append(&head, 35);
+    append(&head, 50);
     printList(head);
-    
     deleteLast(&head);
     printList(head);
     return 0;
 }
+
+// void deleteLast(Node** head_ref){
+//     if(*head_ref == NULL) return;
+//     if((*head_ref)->next == NULL){
+//         delete *head_ref;
+//         *head_ref = NULL;
+//         return;
+//     }
+//     Node* sec_las = *head_ref;
+//     while((sec_las)->next->next != NULL){
+//         sec_las = sec_las->next;
+//     }
+//     delete (sec_las->next);
+//     sec_las->next = NULL;
+// }
