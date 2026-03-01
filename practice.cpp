@@ -12,7 +12,7 @@ void append(Node** head_ref, int newdata){
     newnode->next = NULL;
     
     if(*head_ref == NULL){
-        *head_ref=newnode;
+        *head_ref = newnode;
         return;
     }
     
@@ -23,54 +23,63 @@ void append(Node** head_ref, int newdata){
     last->next = newnode;
 }
 
+
+//New func insert_After but this is basic one and hard to use really
+void insAft(Node* pervNode, int newdata){
+    if(pervNode == NULL){
+        cout<<"Aeo no prev Nodes exists girly";
+    }
+    
+    Node* newnode = new Node();
+    newnode->data = newdata;
+    
+    newnode->next = pervNode->next;
+    pervNode->next = newnode;
+}
+
+
 void deleteLast(Node** head_ref){
     if(*head_ref == NULL) return;
     if((*head_ref)->next == NULL){
-        delete *head_ref;
-        //just this line
+        delete (*head_ref);
         *head_ref = NULL;
         return;
     }
     
-    Node* sec_las = *head_ref;
-    while(sec_las->next->next != NULL){
-        sec_las = sec_las->next;
+    Node* sec_last = *head_ref;
+    while((sec_last)->next->next != NULL){
+        sec_last = sec_last->next;
     }
-    //same as ahead brother;
-    delete (sec_las->next);
-    sec_las->next = NULL;
+    delete (sec_last->next);
+    sec_last->next = NULL;
+    return;
 }
 
 void printList(Node* node){
     while(node != NULL){
-        cout<<node->data<<" -> ";
+        cout<<node->data<<" => ";
         node = node->next;
     }
-    cout<<"NULL";
+    cout<<"NULL \n";
 }
 
 int main(){
     Node* head = NULL;
-    append(&head, 10);
-    append(&head, 35);
-    append(&head, 50);
+    append(&head, 20);
+    append(&head, 30);
+    printList(head);
+    insAft(head, 25); // it only adds after the first head element.
+    printList(head);
+    //here lets try putting after the sec element;
+    insAft(head->next, 27);
+    printList(head);
+    // see now, that's definitely how ur supposed to use it, or u can make an element and use it as well
+    //like sec = head->next->next see ;)
+    deleteLast(&head);
+    printList(head);
+    deleteLast(&head);
     printList(head);
     deleteLast(&head);
     printList(head);
     return 0;
 }
-
-// void deleteLast(Node** head_ref){
-//     if(*head_ref == NULL) return;
-//     if((*head_ref)->next == NULL){
-//         delete *head_ref;
-//         *head_ref = NULL;
-//         return;
-//     }
-//     Node* sec_las = *head_ref;
-//     while((sec_las)->next->next != NULL){
-//         sec_las = sec_las->next;
-//     }
-//     delete (sec_las->next);
-//     sec_las->next = NULL;
-// }
