@@ -44,13 +44,13 @@ void delAftValue(Node** head, int tv){
         h = h->next;
     }
     //cout<<"Found it: "<<h->data<<"\n";
-    if(h != NULL){
+    if(h != NULL && h->next != NULL){ //making sure we don't it works even if the target value is the last node.
     Node* temp = h->next;
     h->next = temp->next;
     
     delete temp;
     } else {
-        cout<<"Couldn't find her bruh ;_; \n";
+        cout<<"Couldn't find her, or she's the last carriage bruh ;_; \n";
     }
 
     //say u wanna delete everything after value tho, simple >_<
