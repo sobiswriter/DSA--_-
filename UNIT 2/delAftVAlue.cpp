@@ -62,6 +62,7 @@ void delAftValue(Node** head, int tv){
 void insertAft(Node* Perv, int nd){
     if(Perv == NULL){
         cout<<"Perv head doesn't exist";
+        return;
     }
     
     Node* nn = new Node();

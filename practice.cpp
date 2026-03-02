@@ -37,16 +37,57 @@ void dL(Node** hr){
     delete (sL->next);
     sL->next = NULL;
 }
+// Let's try
+void delAftValue(Node** head, int tv){
+    Node* h = *head;
+    while(h != NULL && h->data != tv){
+        h = h->next;
+    }
+    //cout<<"Found it: "<<h->data<<"\n";
+    if(h != NULL && h->next != NULL){ //making sure we don't it works even if the target value is the last node.
+    Node* temp = h->next;
+    h->next = temp->next;
+    
+    delete temp;
+    } else {
+        cout<<"Couldn't find her, or she's the last carriage bruh ;_; \n";
+    }
+
+    //say u wanna delete everything after value tho, simple >_<
+    // delete (h->next);
+    // h->next = NULL;
+}
+//BOOM we got it all by ourself heheh, take that Niva ;)
 
 void insertAft(Node* Perv, int nd){
     if(Perv == NULL){
         cout<<"Perv head doesn't exist";
+        return;
     }
     
     Node* nn = new Node();
     nn->data = nd;
     nn->next = Perv->next;
     Perv->next = nn;
+}
+
+//insertAV uses the current head, a target int value & the newVAlue as well to work
+void insertAftValue(Node* head, int tv, int nd){
+    Node* current = head;
+    //Just go through it, ain't that tuff ;)
+    while(current != NULL && current->data != tv){
+        current = current->next;
+    }
+    
+    if(current != NULL){
+        Node* newnode = new Node();
+        newnode->data = nd;
+        newnode->next = current->next;
+        current->next = newnode;
+    } else {
+        cout<<"Sorry couldn't find the girl ;_;\n";
+    }
+    
 }
 
 void pL(Node* node){
@@ -63,7 +104,11 @@ int main(){
     append(&h, 20);
     append(&h, 30);
     pL(h);
-    insertAft(h, 22);
+    insertAft(h->next, 22);
+    pL(h);
+    insertAftValue(h, 22, 25);
+    pL(h);
+    delAftValue(&h, 20); //Just enter the prev value u wanna delete hehe
     pL(h);
     dL(&h);
     pL(h);
@@ -71,7 +116,3 @@ int main(){
     return 0;
     
 }
-
-
-
-
