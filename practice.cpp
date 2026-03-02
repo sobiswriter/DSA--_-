@@ -6,80 +6,72 @@ struct Node{
     Node* next;
 };
 
-void append(Node** head_ref, int newdata){
-    Node* newnode = new Node();
-    newnode->data = newdata;
-    newnode->next = NULL;
+void append(Node** hr, int nd){
+    Node* nn = new Node();
+    nn->data = nd;
+    nn->next = NULL;
     
-    if(*head_ref == NULL){
-        *head_ref = newnode;
+    if(*hr == NULL){
+        *hr = nn;
         return;
     }
     
-    Node* last = *head_ref;
-    while(last->next != NULL){
-        last = last->next;
+    Node* l = *hr;
+    while(l->next != NULL){
+        l = l->next;
     }
-    last->next = newnode;
+    l->next = nn;
 }
 
-
-//New func insert_After but this is basic one and hard to use really
-void insAft(Node* pervNode, int newdata){
-    if(pervNode == NULL){
-        cout<<"Aeo no prev Nodes exists girly";
-    }
-    
-    Node* newnode = new Node();
-    newnode->data = newdata;
-    
-    newnode->next = pervNode->next;
-    pervNode->next = newnode;
-}
-
-
-void deleteLast(Node** head_ref){
-    if(*head_ref == NULL) return;
-    if((*head_ref)->next == NULL){
-        delete (*head_ref);
-        *head_ref = NULL;
+void dL(Node** hr){
+    if(*hr == NULL) return;
+    if((*hr)->next == NULL){
+        delete *hr;
+        *hr = NULL;
         return;
     }
-    
-    Node* sec_last = *head_ref;
-    while((sec_last)->next->next != NULL){
-        sec_last = sec_last->next;
+    Node* sL = *hr;
+    while(sL->next->next != NULL){
+        sL = sL->next;
     }
-    delete (sec_last->next);
-    sec_last->next = NULL;
-    return;
+    delete (sL->next);
+    sL->next = NULL;
 }
 
-void printList(Node* node){
+void insertAft(Node* Perv, int nd){
+    if(Perv == NULL){
+        cout<<"Perv head doesn't exist";
+    }
+    
+    Node* nn = new Node();
+    nn->data = nd;
+    nn->next = Perv->next;
+    Perv->next = nn;
+}
+
+void pL(Node* node){
     while(node != NULL){
-        cout<<node->data<<" => ";
+        cout<<node->data<<"->";
         node = node->next;
     }
-    cout<<"NULL \n";
+    cout<<"VOId\n";
 }
 
 int main(){
-    Node* head = NULL;
-    append(&head, 20);
-    append(&head, 30);
-    printList(head);
-    insAft(head, 25); // it only adds after the first head element.
-    printList(head);
-    //here lets try putting after the sec element;
-    insAft(head->next, 27);
-    printList(head);
-    // see now, that's definitely how ur supposed to use it, or u can make an element and use it as well
-    //like sec = head->next->next see ;)
-    deleteLast(&head);
-    printList(head);
-    deleteLast(&head);
-    printList(head);
-    deleteLast(&head);
-    printList(head);
+    Node* h = NULL;
+    append(&h, 10);
+    append(&h, 20);
+    append(&h, 30);
+    pL(h);
+    insertAft(h, 22);
+    pL(h);
+    dL(&h);
+    pL(h);
+    
     return 0;
+    
 }
+
+
+
+
