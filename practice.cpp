@@ -6,113 +6,71 @@ struct Node{
     Node* next;
 };
 
-void append(Node** hr, int nd){
-    Node* nn = new Node();
-    nn->data = nd;
-    nn->next = NULL;
+void append(Node** h_ref, int newdata){
+    Node* newnode = new Node();
+    newnode->data = newdata;
+    newnode-> next = NULL;
     
-    if(*hr == NULL){
-        *hr = nn;
+    if(*h_ref == NULL){
+        *h_ref=newnode;
         return;
     }
-    
-    Node* l = *hr;
-    while(l->next != NULL){
-        l = l->next;
+    Node* last = *h_ref;
+    while(last->next != NULL){
+        last = last->next;
     }
-    l->next = nn;
+    last->next = newnode;
 }
 
-void dL(Node** hr){
-    if(*hr == NULL) return;
-    if((*hr)->next == NULL){
-        delete *hr;
-        *hr = NULL;
-        return;
-    }
-    Node* sL = *hr;
-    while(sL->next->next != NULL){
-        sL = sL->next;
-    }
-    delete (sL->next);
-    sL->next = NULL;
-}
-// Let's try
-void delAftValue(Node** head, int tv){
-    Node* h = *head;
-    while(h != NULL && h->data != tv){
-        h = h->next;
-    }
-    //cout<<"Found it: "<<h->data<<"\n";
-    if(h != NULL && h->next != NULL){ //making sure we don't it works even if the target value is the last node.
-    Node* temp = h->next;
-    h->next = temp->next;
-    
-    delete temp;
-    } else {
-        cout<<"Couldn't find her, or she's the last carriage bruh ;_; \n";
-    }
-
-    //say u wanna delete everything after value tho, simple >_<
-    // delete (h->next);
-    // h->next = NULL;
-}
-//BOOM we got it all by ourself heheh, take that Niva ;)
-
-void insertAft(Node* Perv, int nd){
-    if(Perv == NULL){
-        cout<<"Perv head doesn't exist";
-        return;
-    }
-    
-    Node* nn = new Node();
-    nn->data = nd;
-    nn->next = Perv->next;
-    Perv->next = nn;
-}
-
-//insertAV uses the current head, a target int value & the newVAlue as well to work
-void insertAftValue(Node* head, int tv, int nd){
-    Node* current = head;
-    //Just go through it, ain't that tuff ;)
+void insertAftValue(Node* prev, int tv, int nv){
+    Node* current = prev;
     while(current != NULL && current->data != tv){
-        current = current->next;
+        current=current->next;
     }
     
     if(current != NULL){
         Node* newnode = new Node();
-        newnode->data = nd;
+        newnode->data = nv;
         newnode->next = current->next;
         current->next = newnode;
     } else {
-        cout<<"Sorry couldn't find the girl ;_;\n";
+        cout<<"we couldn't find her\n";
+    }
+}
+
+void deleteAftValue(Node** prev, int tv){
+    Node* current = *prev;
+    while(current != NULL && current->data != tv){
+        current=current->next;
+    }
+    
+    if(current != NULL && current->next != NULL){
+        Node* temp = current->next;
+        current->next = temp->next;
+        delete temp;
+    } else {
+        cout<<"couldn't find her geez\n";
     }
     
 }
 
-void pL(Node* node){
+void printList(Node* node){
     while(node != NULL){
         cout<<node->data<<"->";
-        node = node->next;
+        node=node->next;
     }
-    cout<<"VOId\n";
+    cout<<"NULL\n";
 }
 
 int main(){
-    Node* h = NULL;
-    append(&h, 10);
-    append(&h, 20);
-    append(&h, 30);
-    pL(h);
-    insertAft(h->next, 22);
-    pL(h);
-    insertAftValue(h, 22, 25);
-    pL(h);
-    delAftValue(&h, 20); //Just enter the prev value u wanna delete hehe
-    pL(h);
-    dL(&h);
-    pL(h);
-    
+    Node* head = NULL;
+    append(&head, 10);
+    append(&head, 20);
+    append(&head, 30);
+    printList(head);
+    insertAftValue(head, 20, 25);
+    printList(head);
+    deleteAftValue(&head, 20);
+    printList(head);
     return 0;
-    
 }
