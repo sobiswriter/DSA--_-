@@ -7,6 +7,8 @@ struct Node{
     Node* next;
 };
 
+//THis is ur versitility at peak func ;)
+
 void insertF(Node** head, Node** tale, int newdata){
     Node* newnode = new Node();
     newnode->data = newdata;
@@ -35,7 +37,7 @@ void insertB(Node** head, Node** tale, int newdata){
     (*tale) = newnode;
 }
 
-void delByValDDL(Node** head, int del){
+void delByValDDL(Node** head, Node** tale, int del){
     Node* current = *head;
     
     while(current != NULL && current->data != del){
@@ -45,6 +47,10 @@ void delByValDDL(Node** head, int del){
     if(current == NULL){
         cout<<"Aeo she aint dere gurl ;D\n";
         return;
+    }
+    
+    if(current->next == NULL){
+        *tale = current->perv;
     }
     
     if(*head == current){
