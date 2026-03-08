@@ -10,13 +10,13 @@ struct Node{
 void insertF(Node** head, Node** tale, int newdata){
     Node* newnode = new Node();
     newnode->data = newdata;
-    newnode->perv = NULL;
     newnode->next = (*head);
+    newnode->perv = NULL;
     
     if((*head) != NULL){
         (*head)->perv = newnode;
     } else {
-        *tale = newnode;
+        (*tale) = newnode;
     }
     (*head) = newnode;
 }
@@ -27,62 +27,131 @@ void insertB(Node** head, Node** tale, int newdata){
     newnode->next = NULL;
     newnode->perv = (*tale);
     
-    if(*tale != NULL){
+    if((*tale) != NULL){
         (*tale)->next = newnode;
     } else {
-        *head = newnode;
+        (*head) = newnode;
     }
     (*tale) = newnode;
 }
 
-void delByValDDL(Node** head, int del){
+void DelByVal(Node** head, Node** tale, int del){
     Node* current = *head;
     
     while(current != NULL && current->data != del){
-        current = current->next;
+        current=current->next;
     }
     
-    if(current == NULL){
-        cout<<"Aeo she aint dere gurl ;D\n";
-        return;
-    }
-    
-    if(*head == current){
+    if(current == *head){
         *head = current->next;
     }
     
+    if(current->next == NULL){
+        *tale = current->perv;
+    }
+    
     if(current->next != NULL){
-        current->next->perv = current->perv;
+        current->perv->next = current->next;
     }
     
     if(current->perv != NULL){
-        current->perv->next = current->next;
+        current->next->perv = current->perv;
     }
     
     delete current;
 }
 
+
+// void insertB(Node** head, Node** tale, int newdata){
+//     Node* newnode = new Node();
+//     newnode->data = newdata;
+//     newnode->next = NULL;
+//     newnode->perv = (*tale);
+    
+//     if((*tale) != NULL){
+//         (*tale)->next = newnode;
+//     } else {
+//         (*head) = newnode;
+//     } 
+//     (*tale) = newnode;
+// }
+
+// void insertF(Node** head, Node** tale, int newdata){
+//     Node* newnode = new Node();
+//     newnode->data = newdata;
+//     newnode->next = (*head);
+//     newnode->perv = NULL;
+    
+//     if((*head) != NULL){
+//         (*head)->perv = newnode;
+//     } else {
+//         (*tale)= newnode;
+//     }
+//     (*head) =  newnode;
+// }
+
+// void DelByVal(Node** head, Node** tale, int del){
+//     Node* current = (*head);
+//     while(current != NULL && current->data != del){
+//         current=current->next;
+//     }
+    
+//     if(current->next == NULL){
+//         *tale = current->perv;
+//     }
+    
+//     if(current == NULL){
+//         cout<<"can't find her";
+//         return;
+//     }
+    
+//     if(*head == current){
+//         *head = current->next;
+//     }
+    
+//     if(current->next != NULL){
+//         current->perv->next = current->next;
+//     }
+    
+//     if(current->perv != NULL){
+//         current->next->perv = current->perv;
+//     }
+    
+//     delete current;
+// }
+
+
 void printList(Node* node){
-    while(node != NULL){
-        cout<<node->data<<" T_T ";
-        node = node->next;
+    while(node!=NULL){
+        cout<<node->data<<" -> ";
+        node=node->next;
     }
-    cout<<"Hello\n";
+    cout<<"Hola\n";
 }
 
 int main(){
     Node* head = NULL;
-    Node* tail = NULL;
-
-    insertF(&head, &tail, 10);
-    insertF(&head, &tail, 20);
-    insertF(&head, &tail, 30);
+    Node* tale = NULL;
+    insertF(&head, &tale, 10);
+    insertF(&head, &tale, 20);
+    insertB(&head, &tale, 30);
+    insertB(&head, &tale, 40);
     printList(head);
-    insertB(&head, &tail, 40);
-    insertB(&head, &tail, 50);
-    printList(head);
-    delByValDDL(&head, 10);
+    DelByVal(&head, &tale, 10);
     printList(head);
     return 0;
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
 
