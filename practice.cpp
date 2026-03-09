@@ -1,50 +1,57 @@
 #include <iostream>
 using namespace std;
 
-int stack[5];
-int top = -1;
+struct Node{
+    int data;
+    Node* next;
+    Node* perv;
+};
 
-void push(int x){
-    if (top == 4){
-        cout<<"Stack Overflow\n";
+//push in place of insertFront
+void push(Node** head, Node** tale, int newdata){
+    Node* newnode = new Node();
+    newnode->data = newdata;
+    newnode->next = *head;
+    newnode->perv = NULL;
+    
+    if((*head) != NULL){
+        (*head)->perv = newnode;
     } else {
-        stack[++top] = x;
-        cout<<"Pushed "<< x <<"\n";
+        (*tale) = newnode;
     }
+    (*head) = newnode;
+    cout<<"Pushed "<<newdata<<"\n";
 }
 
-void pop(){
-    if (top == -1){
-        cout<<"Stack Underflow\n";
-    } else {
-        cout<<"Popped "<<stack[top--]<<" \n";
-    }
+//pop in place of delete;
+void pop(Node** head){
+    cout<<"Popped "<<(*head)->data<<"\n";
+    if((*head) == NULL) return;
+    Node* temp = (*head);
+    (*head) = (*head)->next;
+    delete temp;
 }
 
-void printStack(){
-    if (top==-1){
-        cout<<"Stack's empty\n";
-    } else {
-        cout<<"Stack: ";
-        for(int i=top; i>=0; i--) cout<<stack[i]<<" ";
-        //didn't knew using paranthesis over here actaully had some meaning cool -_-
-        cout<<"\n";
+//printStack in place of printList
+void printList(Node* node){
+    cout<<"Stack:";
+    while(node != NULL){
+        cout<<node->data<<" ";
+        node= node->next;
     }
+    cout<<"\n";
 }
 
 int main(){
-    pop();
-    push(10);
-    push(20);
-    printStack();
-    pop();
-    printStack();
-    push(30);
-    push(40);
-    push(50);
-    push(60);
-    printStack();
-    push(70);
-    printStack();
+    
+    Node* head = NULL;
+    Node* tale = NULL;
+    push(&head, &tale, 10);
+    push(&head, &tale, 20);
+    push(&head, &tale, 30);
+    printList(head);
+    pop(&head);
+    printList(head);
+    
     return 0;
 }
