@@ -31,7 +31,7 @@ void printStack(){
         cout<<"\n";
     }
 }
-
+//sry but I need the commit
 int main(){
     pop();
     push(10);
