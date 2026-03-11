@@ -1,57 +1,45 @@
 #include <iostream>
 using namespace std;
 
-struct Node{
-    int data;
-    Node* next;
-    Node* perv;
-};
+int q[5];
+int front = -1;
+int rear = -1;
 
-//push in place of insertFront
-void push(Node** head, Node** tale, int newdata){
-    Node* newnode = new Node();
-    newnode->data = newdata;
-    newnode->next = *head;
-    newnode->perv = NULL;
-    
-    if((*head) != NULL){
-        (*head)->perv = newnode;
+void enqueue(int x) {
+    if (rear == 4) cout << "Queue is Full!\n";
+    else {
+        if (front == -1) front = 0;
+        q[++rear] = x;
+        cout << "Enqueued " << x << "\n";
+    }
+}
+
+void dequeue(){
+    if(front == -1 || front > rear){
+        cout<<"No one's left\n";
     } else {
-        (*tale) = newnode;
+        cout<<"Sending "<<q[front++]<<" out\n";
     }
-    (*head) = newnode;
-    cout<<"Pushed "<<newdata<<"\n";
 }
 
-//pop in place of delete;
-void pop(Node** head){
-    cout<<"Popped "<<(*head)->data<<"\n";
-    if((*head) == NULL) return;
-    Node* temp = (*head);
-    (*head) = (*head)->next;
-    delete temp;
-}
-
-//printStack in place of printList
-void printList(Node* node){
-    cout<<"Stack:";
-    while(node != NULL){
-        cout<<node->data<<" ";
-        node= node->next;
+void printQueue(){
+    if(front == -1 || front > rear){
+        cout<<"No one to print ;_;";
+    } else {
+        cout<<"Queue: ";
+        for(int i = front; i <= rear; i++){
+            cout<<q[i]<<" ";
+        }
+        cout<<"\n";
     }
-    cout<<"\n";
 }
 
 int main(){
-    
-    Node* head = NULL;
-    Node* tale = NULL;
-    push(&head, &tale, 10);
-    push(&head, &tale, 20);
-    push(&head, &tale, 30);
-    printList(head);
-    pop(&head);
-    printList(head);
-    
+    enqueue(10);
+    enqueue(15);
+    enqueue(20);
+    printQueue();
+    dequeue();
+    printQueue();
     return 0;
 }
