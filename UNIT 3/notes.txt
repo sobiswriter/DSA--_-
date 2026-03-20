@@ -38,7 +38,6 @@ A queue is like a line at a cinema. The first person in line is the first one to
 | **Deque** | Double-Ended Queue. | Can Enqueue/Dequeue from *both* ends. |
 
 
-
 ---
 
 ## **Part 3: Implementation Differences**

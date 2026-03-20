@@ -35,7 +35,7 @@ This folder is my personal DSA playground: bite-sized implementations, practice 
 3. Compile and run locally to verify.
 4. I'm at unit 2 btw ;
 5. Chillin on Holi man, I'm sorry man, I'm sorry
-
+6. idk what to do....
 Quick compile & run (Windows, PowerShell):
 
 ```powershell
