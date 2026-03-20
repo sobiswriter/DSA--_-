@@ -1,0 +1,59 @@
+## **Part 1: The Stack (LIFO - Last In, First Out)**
+A stack is like a stack of dinner plates. The last one you put on top is the first one you take off.
+
+### **Core Operations**
+* **Push:** Add an element to the top. Check for **Overflow** (stack full).
+* **Pop:** Remove the top element. Check for **Underflow** (stack empty).
+* **Peek/Top:** Look at the top element without removing it.
+
+### **Implementation Logic**
+* **Array:** Uses a single variable `top`.
+    * `Push`: `stack[++top] = value`
+    * `Pop`: `return stack[top--]`
+* **Linked List:** `top` is a pointer to the head node. 
+    * `Push`: Create new node, `newNode->next = top`, `top = newNode`.
+
+### **Arithmetic Expressions (Polish Notation)**
+1.  **Infix:** $A + B$ (Human readable)
+2.  **Postfix:** $AB+$ (Machine readable - no parentheses needed!)
+3.  **Prefix:** $+AB$
+
+> **The Conversion Rule:** Use a stack for operators. Higher priority ($*, /$) sits on lower priority ($+, -$). If a lower priority operator tries to enter, the higher priority one must **Pop** out first. 
+
+---
+
+## **Part 2: The Queue (FIFO - First In, First Out)**
+A queue is like a line at a cinema. The first person in line is the first one to get a ticket.
+
+### **Core Operations**
+* **Enqueue:** Add to the `rear`.
+* **Dequeue:** Remove from the `front`.
+
+### **Types of Queues**
+| Type | Description | Key Feature |
+| :--- | :--- | :--- |
+| **Linear Queue** | Standard line. | Leads to "wasted space" at the front. |
+| **Circular Queue** | `rear` connects back to `front`. | Uses `(rear + 1) % size` to wrap around. |
+| **Priority Queue** | Elements have a "VIP" status. | Dequeue happens based on priority, not arrival. |
+| **Deque** | Double-Ended Queue. | Can Enqueue/Dequeue from *both* ends. |
+
+
+
+---
+
+## **Part 3: Implementation Differences**
+
+### **Array vs. Linked List**
+* **Array:** Faster access, but fixed size. You have to know how many elements you'll have beforehand.
+* **Linked List:** Dynamic size (grows as needed), but uses extra memory for the `next` pointers. 
+
+### **The "Empty" Conditions**
+* **Stack Empty:** `top == -1`
+* **Queue Empty:** `front == -1` or `front > rear`
+* **Circular Queue Full:** `(rear + 1) % size == front`
+
+---
+
+## **Why do we use these?**
+* **Stacks:** Used for Undo/Redo (Ctrl+Z), Recursion (Function calls), and matching brackets in code.
+* **Queues:** Used for Printer tasks, CPU scheduling, and handling website traffic.
