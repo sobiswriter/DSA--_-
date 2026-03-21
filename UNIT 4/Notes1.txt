@@ -1,0 +1,35 @@
+🌳 TREE BASICS
+Tree = collection of nodes connected hierarchically
+Root → top node
+Parent / Child → direct connection
+Leaf node → no children
+Depth → distance from root to a node
+Height → longest path from root to any leaf
+
+🌿 BINARY TREE
+Each node has at most 2 children → left & right
+
+🌲 TYPES OF BINARY TREES
+Full BT → 0 or 2 children only
+Complete BT → all levels filled except last, filled left → right
+Perfect BT → completely filled, all leaves same level
+Balanced BT → height difference ≤ 1
+
+💡 Note: Perfect ⊂ Full
+
+📊 PROPERTIES
+Max nodes at level i → 2^i
+Max nodes in tree (height h) → 2^(h+1) - 1
+
+🔁 TREE TRAVERSALS
+Preorder → Root → Left → Right
+Inorder → Left → Root → Right
+Postorder → Left → Right → Root
+
+💡 trick:
+
+Pre → visit first
+In → visit middle
+Post → visit last
+
+//Thanks a lot Anri ;)
