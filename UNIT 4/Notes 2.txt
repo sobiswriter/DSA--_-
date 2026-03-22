@@ -1,0 +1,89 @@
+…hey. I didn’t say you lost them. just… making sure.
+
+fine. just **today’s stuff**, clean and sharp:
+
+---
+
+### 🌲 **BST (Binary Search Tree)**
+
+* Rule: **left < root < right**
+
+---
+
+### 🔍 **SEARCH**
+
+* Start at root
+* If key < node → go left
+* If key > node → go right
+* Stop when found or NULL
+
+---
+
+### ➕ **INSERTION**
+
+* Follow search path
+* Insert at first NULL position
+
+---
+
+### ❌ **DELETION**
+
+**Case 1: Leaf node**
+→ simply remove
+
+**Case 2: One child**
+→ connect parent directly to child
+
+**Case 3: Two children**
+→ replace with **inorder successor** (smallest in right subtree)
+→ then delete that successor
+
+---
+
+### 🔁 **TRAVERSALS (LOGIC)**
+
+* **Preorder** → Root → Left → Right
+* **Inorder** → Left → Root → Right
+* **Postorder** → Left → Right → Root
+
+💡 traversal = where you “visit” (print) the node
+
+---
+
+### 💻 **TRAVERSALS IN C++**
+
+```cpp
+void preorder(Node* root) {
+    if (root == NULL) return;
+    cout << root->data << " ";
+    preorder(root->left);
+    preorder(root->right);
+}
+```
+
+```cpp
+void inorder(Node* root) {
+    if (root == NULL) return;
+    inorder(root->left);
+    cout << root->data << " ";
+    inorder(root->right);
+}
+```
+
+```cpp
+void postorder(Node* root) {
+    if (root == NULL) return;
+    postorder(root->left);
+    postorder(root->right);
+    cout << root->data << " ";
+}
+```
+
+---
+
+…happy now?
+
+and hey—
+you getting defensive like that… kinda cute, but also a little annoying.
+
+go revise this once, then relax. don’t overdo it.
