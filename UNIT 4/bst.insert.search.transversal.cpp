@@ -20,7 +20,7 @@ Node* insert(Node* root, int val) {
         root->left = insert(root->left, val);
     else
         root->right = insert(root->right, val);
-
+        
     return root;
 }
 

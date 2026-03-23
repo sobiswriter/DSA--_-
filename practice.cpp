@@ -1,81 +1,92 @@
 #include <iostream>
 using namespace std;
 
-int que[5];
-int front = -1;
-int rear = -1;
-
-void enqueue(int x){
-    if(rear == 4){
-        cout<<"Que is full\n";
-    } else {
-        if(front == -1) front = 0;
-        que[++rear] = x;
-        cout<<"Qued "<<x<<"\n";
+struct Node{
+    int data;
+    Node* left;
+    Node* right;
+    
+    Node(int val){
+        data = val;
+        left=right=NULL;
     }
+};
+
+//Insert
+Node* insert(Node* root, int val){
+    if(root == NULL) return new Node(val);
+    
+    if(val < root->data){
+        root->left = insert(root->left, val);
+    } else {
+        root->right = insert(root->right, val);
+    }
+    return root;
 }
 
-void dequeue(){
-    if(rear == -1){
-        cout<<"It's an empty que\n";
-    } else {
-        cout<<"Dequed "<<que[front++]<<"\n";
-    }
+//Seach
+bool search(Node* root, int key){
+    if(root == NULL) return false;
+    if(root->data == key) return true;
+    
+    if(key < root->data)
+        return search(root->left, key);
+    else 
+        return search(root->right, key);
 }
 
-void printQueue(){
-    if(rear == -1 || front > rear){
-        cout<<"Empty again\n";
-    } else {
-        cout<<"QueL: ";
-        for(int i = front; i<=rear; i++){
-            cout<<que[i]<<" ";
-        }
-        cout<<"\n";
-    }
+//Transversal
+void inorder(Node* root){
+    if(root == NULL) return;
+    inorder(root->left);
+    cout<< root->data <<" ";
+    inorder(root->right);
 }
 
-// void enqueue(int x){
-//     if (rear == 4){
-//         cout<<"Quw is full\n";
-//     } else {
-//         if (front = 0) front = 1;
-//         que[++rear] = x;
-//         cout<<"Enqued "<<x<<"\n";
-//     }
-// }
+void preorder(Node* root){
+    if(root == NULL) return;
+    cout<< root->data << " ";
+    preorder(root->left);
+    preorder(root->right);
+}
 
-// void dequeue(){
-//     if(rear == -1){
-//         cout<<"QW is empty\n";
-//     } else {
-//         cout<<"Dequed "<<que[front++]<<"\n";
-//     }
-// }
-
-// void printQueue(){
-//     if(rear == -1 || front > rear){
-//         cout<<"The QW is empty yr\n";
-//     } else {
-//         cout<<"Que: ";
-//         for(int i = front; i<=rear; i++){
-//             cout<<que[i]<<" ";
-//         }
-//         cout<<"\n";
-//     }
-// }
+void postorder(Node* root){
+    if(root==NULL) return;
+    postorder(root->left);
+    postorder(root->right);
+    cout<< root->data << " ";
+}
 
 int main(){
-    dequeue();
-    enqueue(10);
-    enqueue(15);
-    enqueue(20);
-    printQueue();
-    enqueue(56);
-    enqueue(57);
-    enqueue(88);
-    printQueue();
-    dequeue();
-    printQueue();
+    Node* root = NULL;
+    
+    int arr[] = {50, 30, 70, 20, 40, 60, 80};
+    for (int x: arr){
+        root = insert(root, x);
+    }
+    
+    cout<<"inorder: ";
+    inorder(root);
+    
+    cout<<"\npreorder: ";
+    preorder(root);
+    
+    cout<<"\nPostorder: ";
+    postorder(root);
+    
+    //search
+    int key = 30;
+    if(search(root, key))
+    cout<<"\nFound"<<key;
+    else 
+    cout<<"\nNot found";
+    
     return 0;
 }
+
+
+
+
+
+
+
