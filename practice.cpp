@@ -1,22 +1,20 @@
 #include <iostream>
+// #include <vector> // I had to learn this in case of BST n stuff, it's prefered to use std::vector
 using namespace std;
 
-struct Node{
+struct Node {
     int data;
     Node* left;
     Node* right;
-    
-    Node(int val){
+    Node(int val) {
         data = val;
-        left=right=NULL;
+        left = right = NULL;
     }
 };
 
-//Insert
-Node* insert(Node* root, int val){
-    if(root == NULL) return new Node(val);
-    
-    if(val < root->data){
+Node* insert(Node* root, int val) {
+    if (root == NULL) return new Node(val);
+    if (val < root->data) {
         root->left = insert(root->left, val);
     } else {
         root->right = insert(root->right, val);
@@ -24,69 +22,69 @@ Node* insert(Node* root, int val){
     return root;
 }
 
-//Seach
-bool search(Node* root, int key){
-    if(root == NULL) return false;
-    if(root->data == key) return true;
-    
-    if(key < root->data)
+bool search(Node* root, int key) {
+    if (root == NULL) return false;
+    if (key == root->data) return true;
+    if (key < root->data)
         return search(root->left, key);
-    else 
+    else
         return search(root->right, key);
 }
 
-//Transversal
-void inorder(Node* root){
-    if(root == NULL) return;
+void inorder(Node* root) {
+    if (root == NULL) return;
     inorder(root->left);
-    cout<< root->data <<" ";
+    cout << root->data << " ";
     inorder(root->right);
 }
-
-void preorder(Node* root){
-    if(root == NULL) return;
-    cout<< root->data << " ";
+void preorder(Node* root) {
+    if (root == NULL) return;
+    cout << root->data << " ";
     preorder(root->left);
     preorder(root->right);
 }
-
-void postorder(Node* root){
-    if(root==NULL) return;
+void postorder(Node* root) {
+    if (root == NULL) return;
     postorder(root->left);
     postorder(root->right);
-    cout<< root->data << " ";
+    cout << root->data << " ";
 }
 
-int main(){
+int main() {
     Node* root = NULL;
-    
-    int arr[] = {50, 30, 70, 20, 40, 60, 80};
-    for (int x: arr){
+
+    cout << "Please input da Arrey >_<\n";
+    int n;
+    cout << "Please the size first: ";
+    cin >> n;
+
+    // vector<int> arr(n); // This is where I had to use it -_-, still works tho +_+
+    int arr[n];
+    cout << "\nNow the array please: ";
+    for (int i = 0; i < n; i++) {
+        cin >> arr[i];
+    }
+
+    // Range-based loop now works perfectly with vector
+    for (int x : arr) {
         root = insert(root, x);
     }
-    
-    cout<<"inorder: ";
+
+    cout << "\nInorder: ";
     inorder(root);
-    
-    cout<<"\npreorder: ";
+
+    cout << "\nPreorder: ";
     preorder(root);
-    
-    cout<<"\nPostorder: ";
+
+    cout << "\nPostorder: ";
     postorder(root);
-    
-    //search
-    int key = 30;
-    if(search(root, key))
-    cout<<"\nFound"<<key;
-    else 
-    cout<<"\nNot found";
-    
+
+    int key = 55;
+    if (search(root, key)) {
+        cout << "\nFound it: " << key << endl;
+    } else {
+        cout << "\nCouldn't find it, sry ;_;" << endl;
+    }
+    //Can finally move on ig ^_^
     return 0;
 }
-
-
-
-
-
-
-
