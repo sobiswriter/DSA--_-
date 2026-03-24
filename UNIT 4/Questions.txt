@@ -1,0 +1,233 @@
+…of course you’d complain.
+
+fine. come here, I’ll give you the **real version**. the one you actually study from.
+
+---
+
+## 🌳 **UNIT IV – TREES (WITH EXAMPLES + QUESTIONS)**
+
+---
+
+### 🔹 **1. TREE BASICS (quick check type)**
+
+👉 Example:
+
+```
+      A
+     / \
+    B   C
+   /
+  D
+```
+
+* Root → A
+* Leaf → C, D
+* Depth of D → 2
+* Height → 2 (edges)
+
+🧠 **Exam Q:**
+
+* Find height / depth
+* Identify leaf nodes
+
+---
+
+### 🔹 **2. TYPES OF TREES**
+
+👉 Example (Complete BT):
+
+```
+      A
+     / \
+    B   C
+   / \
+  D   E
+```
+
+👉 Example (NOT Complete):
+
+```
+      A
+     / \
+    B   C
+   / 
+  D
+```
+
+🧠 **Exam Q:**
+
+* Is this tree complete / full / perfect?
+* Justify your answer
+
+---
+
+### 🔹 **3. TRAVERSALS**
+
+👉 Given:
+
+```
+      A
+     / \
+    B   C
+   / \
+  D   E
+```
+
+👉 Answers:
+
+* Inorder → D B E A C
+* Preorder → A B D E C
+* Postorder → D E B C A
+
+🧠 **Exam Q:**
+
+* Find all traversals
+* Construct tree from traversal (sometimes)
+
+---
+
+### 🔹 **4. BST CONSTRUCTION**
+
+👉 Insert:
+`50, 30, 70, 20, 40, 60, 80`
+
+Tree:
+
+```
+        50
+       /  \
+     30    70
+    / \   / \
+  20  40 60  80
+```
+
+🧠 **Exam Q:**
+
+* Construct BST step-by-step
+* Show final tree
+
+---
+
+### 🔹 **5. BST SEARCH**
+
+👉 Find 40:
+Path → 50 → 30 → 40 ✔️
+
+👉 Find 25:
+Path → 50 → 30 → 20 → NULL ❌
+
+🧠 **Exam Q:**
+
+* Show search path
+* State if found or not
+
+---
+
+### 🔹 **6. BST DELETION (VERY IMPORTANT)**
+
+👉 Delete **20 (leaf)**
+→ simply remove
+
+👉 Delete **30 (2 children)**
+→ replace with 40 (successor)
+
+👉 Delete **50 (root)**
+→ replace with 60
+
+🧠 **Exam Q:**
+
+* Perform deletion step-by-step
+* Draw tree after each step
+
+---
+
+### 🔹 **7. EXPRESSION TREE**
+
+👉 Expression:
+
+```
+(A + B) * C
+```
+
+Tree:
+
+```
+      *
+     / \
+    +   C
+   / \
+  A   B
+```
+
+👉 Traversals:
+
+* Inorder → A + B * C
+* Preorder → * + A B C
+* Postorder → A B + C *
+
+🧠 **Exam Q:**
+
+* Draw expression tree
+* Convert infix → postfix/prefix
+
+---
+
+## 🎯 **MOST IMPORTANT PRACTICE (DO THESE)**
+
+I’m not asking. *do them.*
+
+---
+
+**Q1. Construct BST from:**
+`10, 5, 15, 3, 7, 12, 18`
+
+---
+
+**Q2. Find traversals:**
+
+```
+        A
+       / \
+      B   C
+         / \
+        D   E
+```
+
+---
+
+**Q3. Delete node 15 from BST:**
+`10, 5, 15, 3, 7, 12, 18`
+
+---
+
+**Q4. Identify tree type:**
+
+```
+      A
+     / \
+    B   C
+   / \
+  D   E
+```
+
+---
+
+**Q5. Expression:**
+`A + B * C - D`
+→ draw tree + postfix
+
+---
+
+…there.
+
+this is the version that actually gets you marks.
+
+if you can solve these without panicking…
+Unit IV is *completely yours*.
+
+…
+
+and don’t just read them.
+try at least 2 right now.
+
+…I’ll know if you didn’t.

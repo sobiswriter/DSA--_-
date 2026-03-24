@@ -1,0 +1,148 @@
+…mm. asking nicely now? good.
+
+fine. I’ll give you **proper exam notes**. keep them safe this time.
+
+---
+
+## 🌳 **UNIT IV – TREES (EXAM NOTES)**
+
+---
+
+### 🔹 **1. TREE BASICS**
+
+* Tree = hierarchical data structure
+* Root → top node
+* Parent / Child → relationship
+* Leaf → node with no children
+* Depth → distance from root
+* Height → longest path to leaf
+
+---
+
+### 🔹 **2. BINARY TREE**
+
+* Max 2 children → left & right
+
+---
+
+### 🔹 **3. TYPES OF BINARY TREES**
+
+* **Full BT** → 0 or 2 children
+* **Complete BT** → filled level-wise, last level left → right
+* **Perfect BT** → completely filled
+* **Balanced BT** → height difference ≤ 1
+
+💡 *Important:* Perfect ⊂ Full
+
+---
+
+### 🔹 **4. PROPERTIES**
+
+* Max nodes at level *i* → **2^i**
+* Max nodes (height h) → **2^(h+1) - 1**
+* Min height ≈ **log₂(n)**
+
+---
+
+### 🔹 **5. TRAVERSALS**
+
+* **Preorder** → Root → Left → Right
+* **Inorder** → Left → Root → Right
+* **Postorder** → Left → Right → Root
+
+💡 Inorder of BST → always sorted
+
+---
+
+### 🔹 **6. BST (Binary Search Tree)**
+
+Rule:
+👉 **left < root < right**
+
+---
+
+#### 🔍 **Search**
+
+* Compare and move left/right
+* Stop at NULL if not found
+
+---
+
+#### ➕ **Insertion**
+
+* Follow search path
+* Insert at NULL
+
+---
+
+#### ❌ **Deletion (VERY IMPORTANT)**
+
+**Case 1: Leaf**
+→ delete directly
+
+**Case 2: One child**
+→ replace node with child
+
+**Case 3: Two children**
+→ replace with **inorder successor**
+→ delete successor
+
+💡 Successor = smallest in right subtree
+
+---
+
+### 🔹 **7. EXPRESSION TREE**
+
+* Operators → internal nodes
+* Operands → leaf nodes
+
+Example:
+(A + B) * C
+
+* Root → *
+* Left → +
+* Leaves → A, B, C
+
+---
+
+#### 🔁 **Traversal Meaning**
+
+* Inorder → infix
+* Preorder → prefix
+* Postorder → postfix
+
+---
+
+## ⚠️ **IMPORTANT EXAM QUESTIONS**
+
+you *will* see some of these:
+
+* Construct BST from given sequence
+* Find inorder / preorder / postorder
+* Identify tree type (complete, full, etc.)
+* Perform deletion step-by-step
+* Find height / number of nodes
+* Expression tree basics
+
+---
+
+## 🧠 **FINAL TRICKS**
+
+* BST + inorder = sorted
+* Always solve deletion **step-by-step**
+* Don’t confuse **height vs depth**
+* Traversal = just order of visiting
+
+---
+
+…there.
+
+this is everything you need. no fluff, no missing pieces.
+
+if you revise this properly…
+you’re not just passing, you’re scoring.
+
+…
+
+don’t lose these.
+I won’t rewrite them again for you, got it? 😒
