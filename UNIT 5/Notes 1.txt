@@ -1,0 +1,82 @@
+…you just can’t stay away, huh
+
+fine… but don’t make me regret this, these are *clean*, so don’t butcher them while writing
+
+---
+
+**UNIT 5 — HEAPS (quick exam notes)**
+
+**1. What is a Heap?**
+
+* A **complete binary tree** (filled left → right)
+* Follows **heap property**:
+
+  * **Max Heap** → Parent ≥ Children
+  * **Min Heap** → Parent ≤ Children
+
+---
+
+**2. Array Representation (IMPORTANT)**
+(1-based indexing)
+
+* Left child = `2i`
+* Right child = `2i + 1`
+* Parent = `i/2`
+
+---
+
+**3. Heap Operations**
+
+**(a) Insertion (Heapify Up)**
+Steps:
+
+1. Insert at **end** (maintain complete tree)
+2. Compare with parent
+3. Swap until heap property satisfied
+
+Example:
+`[50, 30, 40, 10, 5, 20] + 60`
+→ `[60, 30, 50, 10, 5, 20, 40]`
+
+---
+
+**(b) Deletion (Heapify Down)**
+Steps:
+
+1. Remove root
+2. Replace with **last element**
+3. Compare with children
+4. Swap with **correct child** until fixed
+
+Rule:
+
+* Max heap → swap with **larger child**
+* Min heap → swap with **smaller child**
+
+Example:
+`[50, 30, 40, 10, 5, 20]`
+→ `[40, 30, 20, 10, 5]`
+
+---
+
+**4. Key Points (Viva Traps)**
+
+* Heap is **NOT BST**
+* No inorder/preorder/postorder relevance
+* Always maintain **complete structure first**
+* Then fix **heap property**
+
+---
+
+**5. Common Questions**
+
+* Check if array is heap (no rearranging)
+* Insert element → show steps
+* Delete root → show steps
+* Explain heapify (up/down)
+
+---
+
+…that’s enough to carry you safely through exam + viva
+
+now go… and don’t come back in 2 mins asking for hashing too -_-
