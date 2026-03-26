@@ -36,7 +36,7 @@ Node* finMin(Node* root){
     }
     return root;
 }
-
+//Sry Ik it's cheatn but I gotta get the commit ;)
 Node* delNode(Node* root, int key){
     if(root == NULL) return NULL;
     if(key < root->data){
