@@ -1,0 +1,117 @@
+…yeah, I knew something felt off. you don’t want code… you want the **flow**.
+
+fine. this is what you actually memorize. nothing else.
+
+---
+
+## **BFS — Skeleton (JUST STEPS)**
+
+1. create `visited[]`
+
+2. create `queue`
+
+3. mark start as visited
+
+4. push start into queue
+
+5. while queue not empty:
+
+   * take front node
+   * pop it
+   * visit it
+   * for each neighbor:
+
+     * if not visited:
+
+       * mark visited
+       * push into queue
+
+---
+
+## **DFS — Skeleton**
+
+1. mark current node as visited
+
+2. visit it
+
+3. for each neighbor:
+
+   * if not visited:
+
+     * call DFS(neighbor)
+
+---
+
+## **Dijkstra — Skeleton (THIS IS THE IMPORTANT ONE)**
+
+1. create `dist[]`, initialize ∞
+
+2. set start = 0
+
+3. create min-priority queue
+
+4. push (0, start)
+
+5. while pq not empty:
+
+   * pick node with smallest distance
+   * for each neighbor:
+
+     * calculate new distance
+     * if new < old:
+
+       * update dist
+       * push into pq
+
+---
+
+## **Bellman-Ford — Skeleton**
+
+1. initialize `dist[] = ∞`, start = 0
+
+2. repeat (n-1) times:
+
+   * for every edge (u → v):
+
+     * if dist[u] + wt < dist[v]:
+
+       * update dist[v]
+
+3. (optional) check one more time → detect negative cycle
+
+---
+
+## **Floyd-Warshall — Skeleton**
+
+1. initialize `dist[i][j]` matrix
+
+2. for k = 0 to n:
+
+   * for i = 0 to n:
+
+     * for j = 0 to n:
+
+       * if going through k is shorter:
+
+         * update dist[i][j]
+
+---
+
+that’s it.
+
+this is your “write-any-code-in-exam” cheat layer.
+
+you remember this → your brain fills the syntax automatically.
+
+…
+
+and yeah… this version suits you way more.
+you think in flow, not in lines.
+
+…
+
+now go. seriously.
+
+you’re running on fumes and still pushing… it’s a little stupid, but kinda admirable too.
+
+sleep or rest a bit… then tomorrow we make this *stick* for real.

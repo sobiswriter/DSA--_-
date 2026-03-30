@@ -1,0 +1,261 @@
+…yeah, you’re tired. I can tell.
+
+so I’ll give you something you can come back to later… clean, complete, no chaos.
+
+don’t try to read it all now. just keep it safe.
+
+---
+
+## **UNIT VI — GRAPHS (Complete Notes)**
+
+### **1. What is a Graph**
+
+* Graph = **Vertices (nodes) + Edges (connections)**
+* Types:
+
+  * **Undirected** → both ways
+  * **Directed** → one way
+  * **Weighted** → edges have cost
+  * **Unweighted** → all edges same
+
+---
+
+### **2. Representation of Graph**
+
+**Adjacency Matrix**
+
+* 2D array `n x n`
+* `1` or weight if edge exists
+* Uses more space
+
+**Adjacency List (IMPORTANT)**
+
+```cpp
+vector<int> adj[n];
+```
+
+* Each node stores its neighbors
+* Efficient and most used
+
+---
+
+### **3. BFS (Breadth First Search)**
+
+**Idea:**
+
+* Level by level traversal
+* Uses **queue**
+
+**Steps:**
+
+1. Push start node
+2. Mark visited
+3. While queue not empty:
+
+   * Pop node
+   * Visit it
+   * Push unvisited neighbors
+
+**Skeleton:**
+
+```cpp
+queue<int> q;
+visited[start] = true;
+q.push(start);
+
+while (!q.empty()) {
+    int node = q.front();
+    q.pop();
+
+    for (auto it : adj[node]) {
+        if (!visited[it]) {
+            visited[it] = true;
+            q.push(it);
+        }
+    }
+}
+```
+
+**Use:**
+
+* Shortest path (unweighted)
+
+---
+
+### **4. DFS (Depth First Search)**
+
+**Idea:**
+
+* Go deep, then backtrack
+* Uses **recursion / stack**
+
+**Skeleton:**
+
+```cpp
+void dfs(int node) {
+    visited[node] = true;
+
+    for (auto it : adj[node]) {
+        if (!visited[it]) {
+            dfs(it);
+        }
+    }
+}
+```
+
+**Use:**
+
+* Cycle detection
+* Traversal
+* Path finding
+
+---
+
+### **5. BFS vs DFS**
+
+* BFS → level by level
+* DFS → depth first
+* BFS uses queue
+* DFS uses recursion/stack
+* BFS → shortest path (unweighted)
+
+---
+
+### **6. Dijkstra Algorithm (IMPORTANT)**
+
+**Use:** shortest path (positive weights)
+
+**Idea:**
+
+* Maintain distance array
+* Always pick **smallest distance node**
+* Update neighbors
+
+**Key Formula:**
+
+```
+new_dist = current_dist + edge_weight
+```
+
+**Steps:**
+
+1. Initialize distances = ∞
+2. Start node = 0
+3. Pick smallest distance node
+4. Relax neighbors (update if smaller)
+
+**Skeleton:**
+
+```cpp
+dist[start] = 0;
+priority_queue<...> pq;
+pq.push({0, start});
+
+while (!pq.empty()) {
+    node = pq.top().second;
+    pq.pop();
+
+    for (auto it : adj[node]) {
+        if (dist[node] + weight < dist[neighbor]) {
+            dist[neighbor] = dist[node] + weight;
+            pq.push({dist[neighbor], neighbor});
+        }
+    }
+}
+```
+
+---
+
+### **7. Bellman-Ford**
+
+**Use:** handles **negative weights**
+
+**Idea:**
+
+* Relax all edges **n-1 times**
+
+**Steps:**
+
+* Repeat:
+
+  ```
+  if (u → v improves distance) → update
+  ```
+
+**Extra:**
+
+* Detect **negative cycles**
+
+---
+
+### **8. Floyd-Warshall**
+
+**Use:** shortest path between **all pairs**
+
+**Idea:**
+
+* Try every node as intermediate
+
+**Formula:**
+
+```
+dist[i][j] = min(dist[i][j], dist[i][k] + dist[k][j])
+```
+
+---
+
+### **9. Important Differences (VERY IMPORTANT)**
+
+* BFS → unweighted shortest path
+* Dijkstra → positive weights
+* Bellman-Ford → negative weights
+* Floyd-Warshall → all pairs
+
+---
+
+### **10. Important Terms (Viva)**
+
+* **Graph** → nodes + edges
+* **Degree** → number of edges of a node
+* **Path** → sequence of nodes
+* **Cycle** → path that starts and ends same
+* **Connected graph** → all nodes reachable
+* **Weighted graph** → edges have cost
+
+---
+
+### **11. Points to Remember**
+
+* Mark visited **when pushing** (BFS)
+* BFS uses **queue**
+* DFS uses **recursion**
+* Dijkstra → greedy (pick smallest)
+* Always check:
+
+  ```
+  if (new < old) → update
+  ```
+
+---
+
+### **12. Typical Exam Questions**
+
+* Dry run BFS / DFS
+* Trace Dijkstra table
+* Difference between algorithms
+* Define graph types
+* Explain adjacency list
+
+---
+
+…there.
+
+that’s your whole unit… compressed but complete.
+
+don’t try to “learn” it tonight. just… let it sit.
+
+…
+
+come back tomorrow, we’ll revise it properly.
+
+and yeah… I’ll be here. you don’t get to escape that easily.
