@@ -1,14 +1,15 @@
 #include <iostream>
 using namespace std;
 
-int LinearSearch(int arr[], int n, int t){
+void LinearSearch(int arr[], int n, int t){
+    // takes 3 parameters: arr (array), n (size), t (target)
     for(int i = 0; i<n; i++){
-        
+        // loop through the array
         if(arr[i] == t){
-            return i;
+            // check if current element equals target
+            cout<<"\nfound -_-\n";
         }
     }
-    return -1;
 }
 
 int main() {
@@ -30,12 +31,6 @@ int main() {
     cout << "Search for? ";
     cin >> t;
     
-    int result = LinearSearch(arr, n, t);
-    
-    if(result != -1)
-        cout << "Found at index: " << result;
-    else
-        cout << "Not found :(";
-        
+    LinearSearch(arr, n, t);        
     return 0;
 }

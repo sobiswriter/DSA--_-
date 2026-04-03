@@ -7,23 +7,25 @@ struct Node{
 };
 
 void append(Node** head_ref, int new_data){
-    //Make a node;
+    // append to linked list, takes head ref and new data
     Node* new_node = new Node();
+    // create new node
     new_node->data = new_data;
-    //also next node is null
     new_node->next = NULL;
-    //if no nodes, new node is head;
+    // set data and next to null
     if(*head_ref == NULL){
+        // if list empty, set head to new node
         *head_ref = new_node;
         return;
     }
-    //Start at head walk to the end;
     Node* last = *head_ref;
+    // start from head
     while(last->next != NULL){
-        last = last->next; //move to last
+        // traverse to last node
+        last = last->next;
     }
-    last->next = new_node; //perhaps we're adding shit from behind;
-    
+    last->next = new_node;
+    // set last->next to new node
 }
 
 void printList(Node* node) {

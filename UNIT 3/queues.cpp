@@ -6,25 +6,30 @@ int front = -1;
 int rear = -1;
 
 void enqueue(int x) {
+    // enqueue, add to rear
     if (rear == 4) cout << "Queue is Full!\n";
     else {
         if (front == -1) front = 0;
+        // if first element, set front
         q[++rear] = x;
+        // add to rear
         cout << "Enqueued " << x << "\n";
     }
 }
 
 void dequeue(){
+    // dequeue, remove from front
     if(front == -1 || front > rear){
-        cout<<"No one's left\n";
+        cout<<"Queue empty\n";
     } else {
-        cout<<"Sending "<<q[front++]<<" out\n";
+        cout<<"Dequeued "<<q[front++]<<"\n";
     }
 }
 
 void printQueue(){
+    // print queue
     if(front == -1 || front > rear){
-        cout<<"No one to print ;_;";
+        cout<<"Queue empty\n";
     } else {
         cout<<"Queue: ";
         for(int i = front; i <= rear; i++){

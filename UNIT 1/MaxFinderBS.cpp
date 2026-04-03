@@ -1,10 +1,14 @@
 #include <iostream>
 using namespace std;
-//Discovery: The Max detector in an array!
+
 void BubbleSortR(int arr[], int n){
+    // descending bubble sort to find max
     for(int i=0; i<n-1; i++){
+        // passes
         for(int j=0; j<n-1-i; j++){
+            // compare adjacent
             if(arr[j]<arr[j+1]){
+                // swap if smaller first
                 int temp = arr[j+1];
                 arr[j] = arr[j+1];
                 arr[j+1] = temp;
@@ -12,10 +16,7 @@ void BubbleSortR(int arr[], int n){
         }
     }
 }
-//But but but, it's actually easy to get the largest or smallest no, 
-//just use a break statement for anti or normal bubble sort, 
-//and you'll always get the smallest or largest no in the first iteration, 
-//and then you can break the loop to get the max or min no, cool right? 
+
 int main(){
     cout<<"how many nums agn: ";
     int n;
@@ -28,10 +29,7 @@ int main(){
     
     BubbleSortR(arr, n);
     
-    cout<<"Here is ur arr maam: \n";
-    for(int i =0; i<n; i++){
-        cout<<arr[i]<<" ";
-        break;
-    }
+    cout<<"Max is: ";
+    cout<<arr[0];  // first element is max after descending sort
     return 0;
 }

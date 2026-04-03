@@ -51,23 +51,23 @@ void insertAft(Node* Perv, int nd){
     Perv->next = nn;
 }
 
-//insertAV uses the current head, a target int value & the newVAlue as well to work
 void insertAftValue(Node* head, int tv, int nd){
+    // insert after target value
     Node* current = head;
-    //Just go through it, ain't that tuff ;)
-    while(current != NULL && current->data == tv){
+    // find node with tv
+    while(current != NULL && current->data != tv){
         current = current->next;
     }
     
     if(current != NULL){
+        // if found
         Node* newnode = new Node();
         newnode->data = nd;
         newnode->next = current->next;
         current->next = newnode;
     } else {
-        cout<<"Sorry couldn't find the girl\n";
+        cout<<"Not found\n";
     }
-    
 }
 
 void pL(Node* node){

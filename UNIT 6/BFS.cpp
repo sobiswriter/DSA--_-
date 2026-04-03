@@ -4,22 +4,33 @@
 using namespace std;
 
 void bfs(int start, vector<int> adj[], int n) {
+    // BFS traversal
     vector<bool> visited(n, false);
+    // visited array
     queue<int> q;
+    // queue for BFS
 
     visited[start] = true;
+    // mark start visited
     q.push(start);
+    // push start
 
     while (!q.empty()) {
         int node = q.front();
+        // get front
         q.pop();
+        // remove from queue
 
         cout << node << " ";
+        // print node
 
         for (int neighbor : adj[node]) {
+            // for each neighbor
             if (!visited[neighbor]) {
                 visited[neighbor] = true;
+                // mark visited
                 q.push(neighbor);
+                // push to queue
             }
         }
     }

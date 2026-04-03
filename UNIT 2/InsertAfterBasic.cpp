@@ -24,17 +24,19 @@ void append(Node** head_ref, int newdata){
 }
 
 
-//New func insert_After but this is basic one and hard to use really
 void insAft(Node* pervNode, int newdata){
+    // insert after given node
     if(pervNode == NULL){
-        cout<<"Aeo no prev Nodes exists girly";
+        cout<<"No prev node\n";
+        return;
     }
     
     Node* newnode = new Node();
     newnode->data = newdata;
-    
     newnode->next = pervNode->next;
+    // set new->next to prev->next
     pervNode->next = newnode;
+    // set prev->next to new
 }
 
 

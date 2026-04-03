@@ -7,7 +7,7 @@ struct Node{
     Node* next;
 };
 
-//The most versatile insert fucn that utlizes DLL the best.
+// insert at front for double linked list
 void insertF(Node** head, Node** tale, int newdata){
     Node* newnode = new Node();
     newnode->data = newdata;
@@ -15,13 +15,17 @@ void insertF(Node** head, Node** tale, int newdata){
     newnode->next = (*head);
     
     if((*head) != NULL){
+        // if head exists, set prev
         (*head)->perv = newnode;
     } else {
+        // if empty, set tail
         *tale = newnode;
     }
     (*head) = newnode;
+    // update head
 }
 
+// insert at back
 void insertB(Node** head, Node** tale, int newdata){
     Node* newnode = new Node();
     newnode->data = newdata;
@@ -29,11 +33,14 @@ void insertB(Node** head, Node** tale, int newdata){
     newnode->perv = (*tale);
     
     if(*tale != NULL){
+        // if tail exists, set next
         (*tale)->next = newnode;
     } else {
+        // if empty, set head
         *head = newnode;
     }
     (*tale) = newnode;
+    // update tail
 }
 
 

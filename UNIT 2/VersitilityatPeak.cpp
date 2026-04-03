@@ -38,30 +38,35 @@ void insertB(Node** head, Node** tale, int newdata){
 }
 
 void delByValDDL(Node** head, Node** tale, int del){
+    // delete by value in double linked list
     Node* current = *head;
-    
+    // find the node
     while(current != NULL && current->data != del){
         current = current->next;
     }
     
     if(current == NULL){
-        cout<<"Aeo she aint dere gurl ;D\n";
+        cout<<"Not found\n";
         return;
     }
     
     if(current->next == NULL){
+        // if last, update tail
         *tale = current->perv;
     }
     
     if(*head == current){
+        // if head, update head
         *head = current->next;
     }
     
     if(current->next != NULL){
+        // update next's prev
         current->next->perv = current->perv;
     }
     
     if(current->perv != NULL){
+        // update prev's next
         current->perv->next = current->next;
     }
     

@@ -13,37 +13,49 @@ struct Node {
 };
 
 Node* insert(Node* root, int val) {
+    // insert into BST
     if (root == NULL) return new Node(val);
+    // if null, create new
     if (val < root->data) {
         root->left = insert(root->left, val);
+        // go left
     } else {
         root->right = insert(root->right, val);
+        // go right
     }
     return root;
 }
 
 bool search(Node* root, int key) {
+    // search in BST
     if (root == NULL) return false;
+    // not found
     if (key == root->data) return true;
+    // found
     if (key < root->data)
         return search(root->left, key);
+    // search left
     else
         return search(root->right, key);
+    // search right
 }
 
 void inorder(Node* root) {
+    // inorder traversal: left, root, right
     if (root == NULL) return;
     inorder(root->left);
     cout << root->data << " ";
     inorder(root->right);
 }
 void preorder(Node* root) {
+    // preorder: root, left, right
     if (root == NULL) return;
     cout << root->data << " ";
     preorder(root->left);
     preorder(root->right);
 }
 void postorder(Node* root) {
+    // postorder: left, right, root
     if (root == NULL) return;
     postorder(root->left);
     postorder(root->right);

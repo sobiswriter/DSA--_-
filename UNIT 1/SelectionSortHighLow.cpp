@@ -1,16 +1,11 @@
 #include <iostream>
 using namespace std;
 
-//Discovery: Print lowest except the last is the hightest (HighLow)
-//This highlow version is volatile though, there are many mistakes that make it different form
-//the normal selection sort, but it's still a good practice to understand the logic behind it.
 void SelectionSort(int arr[], int n){
+    // first version (buggy for practice)
     for(int i=0; i<n-1; i++){
         int min_idx = i;
-        //major mistake is j = i+1, because we want to compare the current index with the rest of the array, 
-        //not just the next one, so we need to start from i+1 to get the correct min index.
         for(int j=0; j<n-1; j++){
-            //also is's kinda interchaed in the if loop as well, do take care of that k! ;)
             if(j<min_idx){
                 arr[j]=arr[min_idx];
             }
@@ -25,12 +20,11 @@ void SelectionSort(int arr[], int n){
     }
 }
 
-//Discovery: How to print the last no in the array using selection Sort. ;)
 void SelectionSort(int arr[], int n){
+    // second version (also buggy)
     for(int i=0; i<n; i++){
         int min_idx = i;
         for(int j=i+1; j<n; j++){
-            //making changes in the if loop to get the furtherst or closest yk index, Don't forget the break statement toh! :P 
             if(j>min_idx){
                 arr[min_idx] = arr[j];
             }

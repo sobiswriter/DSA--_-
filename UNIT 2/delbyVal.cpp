@@ -39,15 +39,20 @@ void insertAftValue(Node* prev, int tv, int nv){
 }
 
 void deleteAftValue(Node** prev, int tv){
+    // delete after target value
     Node* current = *prev;
+    // find node with tv
     while(current != NULL && current->data != tv){
         current=current->next;
     }
     
     if(current != NULL && current->next != NULL){
+        // if has next
         Node* temp = current->next;
         current->next = temp->next;
         delete temp;
+    }
+}
     } else {
         cout<<"couldn't find her geez\n";
     }

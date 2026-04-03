@@ -6,81 +6,84 @@ struct Node {
     Node* next;
 };
 
-// 1. ADD TO THE CAROUSEL
+// insert into circular linked list
 void insertCLL(Node** head, int val) {
     Node* newNode = new Node();
+    // create new node
     newNode->data = val;
     
-    // If the carousel is empty, start it!
     if (*head == NULL) {
+        // if empty, set head and next to itself
         *head = newNode;
-        newNode->next = *head; // It points to ITSELF! The loop begins.
+        newNode->next = *head;
         return;
     }
     
-    // Walk to the last carriage
     Node* temp = *head;
+    // find last node
     while (temp->next != *head) {
         temp = temp->next;
     }
     
-    // Connect the new carriage
     temp->next = newNode;
-    newNode->next = *head; // Make sure the new last carriage points to the head
+    // connect last to new
+    newNode->next = *head;
+    // new to head
 }
 
-// 2. SURGICAL DELETE FROM THE CAROUSEL
+// delete from circular linked list
 void deleteCLL(Node** head, int key) {
     if (*head == NULL) return;
+    // if empty, return
     
     Node *curr = *head, *prev = NULL;
     
-    // Find the carriage
     while (curr->data != key) {
+        // find the node
         if (curr->next == *head) {
-            cout << "She ain't in the carousel, girly! ;_;\n";
+            cout << "Not found\n";
             return;
         }
         prev = curr;
         curr = curr->next;
     }
     
-    // Scenario A: It's the ONLY carriage left
     if (curr->next == *head && prev == NULL) {
+        // only one node
         *head = NULL;
         delete curr;
         return;
     }
     
-    // Scenario B: We are deleting the HEAD
     if (curr == *head) {
+        // deleting head
         prev = *head;
-        // We have to walk all the way around to tell the last carriage about the new head!
         while (prev->next != *head) prev = prev->next;
         *head = curr->next;
         prev->next = *head;
         delete curr;
     } 
-    // Scenario C: Deleting from the middle or end
     else {
+        // middle or end
         prev->next = curr->next;
         delete curr;
     }
 }
 
-// 3. PRINT THE CAROUSEL (The do-while magic)
+// print circular linked list
 void displayCLL(Node* head) {
     if (head == NULL) {
-        cout << "Carousel is empty!\n";
+        cout << "Empty\n";
         return;
     }
     Node* temp = head;
     do {
-        cout << temp->data << " ~O~ ";
+        // use do-while for circular
+        cout << temp->data << " ";
         temp = temp->next;
     } while (temp != head);
     
-    cout << "(Loops back to " << head->data << ")\n";
+    cout << "\n";
 }
 
 int main() {

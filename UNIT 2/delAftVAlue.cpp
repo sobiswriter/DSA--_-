@@ -37,16 +37,20 @@ void dL(Node** hr){
     delete (sL->next);
     sL->next = NULL;
 }
-// Let's try
 void delAftValue(Node** head, int tv){
+    // delete node after target value
     Node* h = *head;
+    // find node with tv
     while(h != NULL && h->data != tv){
         h = h->next;
     }
-    //cout<<"Found it: "<<h->data<<"\n";
-    if(h != NULL && h->next != NULL){ //making sure we don't it works even if the target value is the last node.
-    Node* temp = h->next;
-    h->next = temp->next;
+    if(h != NULL && h->next != NULL){
+        // if found and has next
+        Node* temp = h->next;
+        h->next = temp->next;
+        delete temp;
+    }
+}
     
     delete temp;
     } else {

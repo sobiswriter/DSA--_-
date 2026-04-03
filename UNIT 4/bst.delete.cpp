@@ -56,44 +56,52 @@ void postorder(Node* root){
 }
 
 
-// Finally doing the delete as well
 Node* findMin(Node* root) {
+    // find min in subtree (leftmost)
     while (root->left != NULL)
         root = root->left;
     return root;
 }
 
 Node* deleteNode(Node* root, int key) {
+    // delete node from BST
     if (root == NULL) return NULL;
-
+    
     if (key < root->data) {
         root->left = deleteNode(root->left, key);
+        // go left
     }
     else if (key > root->data) {
         root->right = deleteNode(root->right, key);
+        // go right
     }
     else {
-        // Case 1: No child
+        // found, handle cases
         if (root->left == NULL && root->right == NULL) {
+            // no child
             delete root;
             return NULL;
         }
-        // Case 2: One child
         else if (root->left == NULL) {
+            // one child: right
             Node* temp = root->right;
             delete root;
             return temp;
         }
         else if (root->right == NULL) {
+            // one child: left
             Node* temp = root->left;
             delete root;
             return temp;
         }
-        // Case 3: Two children
         else {
+            // two children
             Node* temp = findMin(root->right);
+            // find min in right
             root->data = temp->data;
+            // replace
             root->right = deleteNode(root->right, temp->data);
+            // delete min
         }
     }
     return root;

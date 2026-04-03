@@ -1,24 +1,25 @@
 #include <iostream>
 using namespace std;
 
-//Discovery: Same as bofore, exchaning the >,< makes it assending and decending 
-//And using break get highest and lowerst stuff as well ;) enjoy ur Vtine now with some good food! >_<
 void InsertionSort(int arr[], int n){
+    // insertion sort, takes array and size
     for(int i=0; i<n; i++){
+        // loop through each element
         int key = arr[i];
+        // key is current element to insert
         int j = i - 1;
-        //then using a while loop we see if let's say index j is >= 0 & value of j is greater than key
+        // j starts from previous element
         while(j>=0 && arr[j] < key){
-            //we're shifting shit at right (j+1) to left (j)
+            // while j valid and arr[j] < key (for descending sort)
             arr[j+1] = arr[j];
-            //we're going one score back as well
+            // shift arr[j] to right
             j=j-1;
+            // move j left
         }
-        //now that made some free space right, fill that using this below
         arr[j+1] = key;
+        // place key in correct position
     }
 }
-//honestly it's like backtracking.
 
 int main(){
     cout<<"how many nums agn: ";

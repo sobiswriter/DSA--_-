@@ -8,8 +8,11 @@ const int SIZE = 10;
 vector<int> chainTable[SIZE];
 
 void insertChaining(int key) {
+    // insert with chaining
     int index = key % SIZE;
+    // compute hash index
     chainTable[index].push_back(key);
+    // add to vector at index
 }
 
 void displayChaining() {
@@ -31,13 +34,15 @@ void initLinear() {
 }
 
 void insertLinear(int key) {
+    // insert with linear probing
     int index = key % SIZE;
-
+    // start at hash index
     while (linearTable[index] != -1) {
         index = (index + 1) % SIZE;
+        // probe next slot
     }
-
     linearTable[index] = key;
+    // place when empty
 }
 
 void displayLinear() {
@@ -55,15 +60,17 @@ void initQuad() {
 }
 
 void insertQuadratic(int key) {
+    // insert with quadratic probing
     int index = key % SIZE;
+    // start at hash index
     int i = 1;
-
     while (quadTable[index] != -1) {
         index = (key % SIZE + i * i) % SIZE;
+        // probe with i*i
         i++;
     }
-
     quadTable[index] = key;
+    // place when empty
 }
 
 void displayQuad() {
@@ -85,15 +92,18 @@ void initDouble() {
 }
 
 void insertDouble(int key) {
+    // insert with double hashing
     int index = key % SIZE;
+    // primary hash
     int step = hash2(key);
+    // secondary hash
     int i = 0;
-
     while (doubleTable[(index + i * step) % SIZE] != -1) {
         i++;
+        // probe with step
     }
-
     doubleTable[(index + i * step) % SIZE] = key;
+    // place when empty
 }
 
 void displayDouble() {
