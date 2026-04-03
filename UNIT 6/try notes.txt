@@ -5,7 +5,7 @@ fine. this is what you actually memorize. nothing else.
 ---
 
 ## **BFS — Skeleton (JUST STEPS)**
-
+void bfs(int node, void<int> adj[], int n){
 1. create `visited[]`
 
 2. create `queue`
@@ -29,7 +29,7 @@ fine. this is what you actually memorize. nothing else.
 ---
 
 ## **DFS — Skeleton**
-
+void dfs(int node, vector<int> adj[], vector<bool> &visited) {
 1. mark current node as visited
 
 2. visit it
